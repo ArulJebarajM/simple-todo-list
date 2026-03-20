@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(52, 119, 174);
+            margin: 0%;
+        }
+        .main{
+            width:50vw;
+            height:75vh;
+            background-color: rgb(192, 110, 156);
+            position: relative;
+            left:25vw;
+            top:12vh;
+            font-size: x-large;
+            color: white;
+            text-align: center;
+            gap:10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid white;
+            border-radius: 30px;
+        }
+        input{
+            width:250px;
+            height:35px;
+            border:3px solid rgb(7, 6, 7);
+            border-radius:30px;
+            font-size:smaller;
+            padding-left: 50px;
+        
+        }
+        button{
+            width:150px;
+            height:35px;
+            border:3px solid black;
+            border-radius:15px;
+            background-color: rgb(232, 85, 85);
+            color: white;
+            font-size: smaller;
+
+        }
+        .removebutton{
+            background-color: red;
+            color: white;
+            width:80px;
+            height:25px;
+            font-size: small;
+            position: absolute;
+            right: 5px;
+            top:5px;
+            border: 1px solid rgb(14, 12, 12);
+            
+        }
+        .taskstore{
+            position: relative;
+            width:250px;
+            height:35px;
+            background-color: rgb(35, 114, 198);
+            color: white;
+            font-size: large;
+            border: 3px solid white;
+            border-radius: 15px;
+            margin-top:20px;
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            
+        }
+        .taskstore span{
+            position: absolute;
+            left:2vw;
+            text-align: left;
+        }
+        #todolist{
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>To-Do List</h1>
+        <input type="text" id="todoinput" placeholder=" Enter the Task here">
+        <button onclick=" AddToDo()"> Add Task</button>
+        <div id="todolist">
+            
+        </div>
+
+    </div>
+    
+</body>
+<script>
+    function AddToDo() {
+
+    let taskvalue = document.getElementById('todoinput').value;
+    if(taskvalue == ""){
+        return;
+    }
+
+    let taskstore = document.createElement("div");
+    taskstore.className="taskstore"
+     
+   let  tasktext = document.createElement("span");
+   
+    tasktext.innerText=taskvalue;
+    let removebutton=document.createElement("button");
+
+    removebutton.innerText="remove"
+    removebutton.className="removebutton"
+    removebutton.onclick=function(){
+        taskstore.remove();
+    }
+
+    taskstore.appendChild(tasktext);
+    taskstore.appendChild(removebutton);
+
+    document.getElementById('todolist').appendChild(taskstore);
+    document.getElementById('todoinput').value="";
+}
+</script>
+</html>
